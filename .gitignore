@@ -1,0 +1,37 @@
+### Code Editor ###
+
+# VSCode
+.vscode/
+*.code-workspace
+.history
+.ionide
+
+# Pycharm
+*.iws
+.idea/
+out/
+
+### Python ###
+
+# Environments
+env/
+venv/
+cache/
+temp/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyc
+
+### Customize ###
+
+### DotEnv ###
+.env
+
+# Unit test / coverage reports
+.pytest_cache
+
+*.iml
