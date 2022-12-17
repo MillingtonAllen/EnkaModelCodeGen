@@ -1,0 +1,35 @@
+[
+  {
+    "avatarId": 10000007,
+    "level": 90
+  },
+  {
+    "avatarId": 10000067,
+    "level": 70
+  },
+  {
+    "avatarId": 10000068,
+    "level": 60
+  },
+  {
+    "avatarId": 10000065,
+    "level": 70
+  },
+  {
+    "avatarId": 10000031,
+    "level": 90,
+    "costumeId": 203101
+  },
+  {
+    "avatarId": 10000056,
+    "level": 90
+  },
+  {
+    "avatarId": 10000064,
+    "level": 90
+  },
+  {
+    "avatarId": 10000015,
+    "level": 80
+  }
+]

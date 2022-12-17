@@ -1,23 +1,23 @@
 from typing import List
 
 from JavaClass import JavaClass
-from builder.TypedBuilder import TypedBuilder
 from JavaMember import JavaMember
-from builder.naming import to_pascal_case, list_of_type, remove_suffix_if_exist
-from . import TypedBuilderFactory
+from builder.naming import list_of_type
+from .CollectionTypedBuilder import CollectionTypedBuilder
 
 
-class ListBuilder(TypedBuilder):
-
-    def build_as_class(self) -> JavaClass:
-        pass
+class ListBuilder(CollectionTypedBuilder):
+    def build_as_class(self, package_name) -> JavaClass:
+        self.raise_if_contains_primitives(self.value)
+        return super().build_as_class_without_suffix(package_name, suffix="List")
 
     def build_members(self) -> List[JavaMember]:
-        pass
+        return super().build_members_from_iterable(self.value)
 
     def build_as_member(self) -> JavaMember:
-        cleaned_variable_name = remove_suffix_if_exist("List", self.key)
-        pascal_clean_variable_name = to_pascal_case(cleaned_variable_name)
         return JavaMember(
-            variable_type=list_of_type(pascal_clean_variable_name),
+            variable_type=list_of_type(self.get_class_name()),
             variable_name=self.key)
+
+    def get_class_name(self):
+        return super().get_class_name_without_suffix(suffix="List")

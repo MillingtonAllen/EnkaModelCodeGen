@@ -9,7 +9,7 @@ class TypedBuilder:
         self.key = key
         self.value = value
 
-    def build_as_class(self) -> JavaClass:
+    def build_as_class(self, package_name) -> JavaClass:
         raise NotImplementedError()
 
     def build_as_member(self) -> JavaMember:
