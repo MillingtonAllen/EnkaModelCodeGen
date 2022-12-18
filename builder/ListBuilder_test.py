@@ -15,6 +15,24 @@ class ListBuilderTest(unittest.TestCase):
         actual = ListBuilder("testList", test_data).build_as_member()
         self.assertEqual(expected, actual)
 
+    def test_build_as_member_primitive(self):
+        test_data = json.loads('''[
+            210101,
+            210017,
+            210016,
+            210003,
+            210082,
+            210004,
+            210059,
+            210069,
+            210045
+        ]''')
+
+        expected = JavaMember(variable_type="List<Integer>", variable_name="showNameCardIdList")
+        actual = ListBuilder("showNameCardIdList", test_data).build_as_member()
+
+        self.assertEqual(expected, actual)
+
     def test_build_members_list_optional_fields(self):
         with open(os.path.join(os.getcwd(), "TestData", "BuildMembers", "ListOptionalFields.json")) as f:
             test_data = json.loads(f.read())
@@ -58,3 +76,5 @@ class ListBuilderTest(unittest.TestCase):
         actual_class = ListBuilder("testDataList", test_data).build_as_class("com.example.enkaapi.models")
 
         self.assertEqual(expected_class, actual_class)
+
+

@@ -1,11 +1,12 @@
 from JavaClass import JavaClass
 from JavaMember import JavaMember
-from builder.TypedBuilder import TypedBuilder
+from .TypedBuilder import TypedBuilder
+from .exceptions.exceptions import NotSupportedOnPrimitiveException
 
 
 class PrimitiveBuilder(TypedBuilder):
     def build_as_class(self, package_name) -> JavaClass:
-        return super().build_as_class(package_name)
+        raise NotSupportedOnPrimitiveException("Can not build class of primitive")
 
     def build_as_member(self) -> JavaMember:
         return JavaMember(

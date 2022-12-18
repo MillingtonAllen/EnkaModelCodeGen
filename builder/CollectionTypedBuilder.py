@@ -4,6 +4,7 @@ from JavaClass import JavaClass
 from .MemberMerger import merge
 from .TypedBuilderFactory import TypedBuilderFactory, is_complex_type
 from .TypedBuilder import TypedBuilder
+from .exceptions.exceptions import NotSupportedOnPrimitiveException
 from .naming import map_of_type, to_pascal_case, remove_suffix_if_exist
 
 
@@ -17,7 +18,7 @@ class CollectionTypedBuilder(TypedBuilder, ABC):
     def raise_if_contains_primitives(self, payload):
         for each in payload:
             if not is_complex_type(each):
-                raise RuntimeError("Can not call build_as_class on list of primitives")
+                raise NotSupportedOnPrimitiveException("Can not build class of primitive")
 
     def build_as_class_without_suffix(self, package_name, suffix="") -> JavaClass:
         return JavaClass(

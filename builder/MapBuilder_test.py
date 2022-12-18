@@ -15,6 +15,26 @@ class MapBuilderTest(unittest.TestCase):
         actual = MapBuilder("testMap", test_data).build_as_member()
         self.assertEqual(expected, actual)
 
+    def test_build_as_member_primitive(self):
+        test_data = json.loads('''{
+            "1": 10164.1064453125,
+            "2": 4780,
+            "3": 0.10490000247955322,
+            "4": 930.9654541015625,
+            "5": 398.5400085449219,
+            "6": 0.9975999593734741,
+            "7": 614.843505859375,
+            "20": 0.6969000101089478,
+            "21": 0,
+            "22": 1.9464359283447266,
+            "23": 1.4534000158309937
+        }''')
+
+        expected = JavaMember(variable_type="Map<String, Double>", variable_name="fightPropMap")
+        actual = MapBuilder("fightPropMap", test_data).build_as_member()
+
+        self.assertEqual(expected, actual)
+
     def test_build_members_map_optional_fields(self):
         with open(os.path.join(os.getcwd(), "TestData", "BuildMembers", "MapOptionalFields.json")) as f:
             test_data = json.loads(f.read())

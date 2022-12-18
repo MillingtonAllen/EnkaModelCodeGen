@@ -13,8 +13,22 @@ def is_map(variable_name):
     return variable_name[-3:] == "Map"
 
 
+def is_map_complex(payload):
+    for each in payload.values():
+        if is_complex_type(each):
+            return True
+    return False
+
+
 def is_list(input):
     return type(input) is list
+
+
+def is_list_complex(payload):
+    for each in payload:
+        if is_complex_type(each):
+            return True
+    return False
 
 
 def is_dict(input):
