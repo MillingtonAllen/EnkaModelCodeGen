@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 from typing import List
 
-from JavaClassMember import JavaClassMember
+from JavaMember import JavaMember
 
 
 class JavaClass(BaseModel):
     class_name: str
     package_name: str
-    members: List[JavaClassMember]
+    members: List[JavaMember]
