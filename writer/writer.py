@@ -2,10 +2,13 @@ class Writer:
     def __init__(self, java_class):
         self.java_class = java_class
 
-    def write(self):
+    def write(self, lombok: bool = False):
         output = ""
         output += f'''package {self.java_class.package_name};\n'''
         output += '''\n'''
+        output += f'''import lombok.Data;\n'''
+        output += '''\n'''
+        output += '''@Data\n'''
         output += f'''public class {self.java_class.class_name} {{\n'''
 
         for member in self.java_class.members:

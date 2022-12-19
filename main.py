@@ -1,6 +1,6 @@
 import argparse
-import os.path
 import os
+import os.path
 
 from parser import Parser
 from writer import Writer
@@ -17,8 +17,11 @@ def parse_args():
                         required=True)
 
     parser.add_argument('--output-directory',
-                            help="directory to write Java files",
-                            required=True)
+                        help="directory to write Java files",
+                        required=True)
+
+    parser.add_argument('--lombok', action=argparse.BooleanOptionalAction, default=False,
+                        help="adds Lombok import and @Data tag to classes")
 
     return parser.parse_args()
 
@@ -36,9 +39,10 @@ def main():
     java_classes = parser.traverse_dict(data)
 
     for cls in java_classes:
-        java_code = Writer(cls).write()
+        java_code = Writer(cls).write(args.lombok)
         with open(os.path.join(args.output_directory, f'''{cls.class_name}.java'''), mode='w') as out:
             out.write(java_code)
+
 
 if __name__ == "__main__":
     main()
